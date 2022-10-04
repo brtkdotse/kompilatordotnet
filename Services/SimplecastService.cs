@@ -25,7 +25,7 @@ namespace Kompilator.Services
 
             _cache.Set(allEpisodeCacheKey, episodes.Collection, new DateTimeOffset(DateTime.Now.AddHours(1)));
 
-            return episodes.Collection;
+            return episodes.Collection.Where(x => x.Published != null).ToList();
         }
 
         public async Task<Episode?> GetEpisodeAsync(string episodeId, string showId)
@@ -55,7 +55,7 @@ namespace Kompilator.Services
     public class Episode
     {
         [JsonPropertyName("published_at")]
-        public DateTime Published { get; set; }
+        public DateTime? Published { get; set; }
 
         [JsonPropertyName("id")]
         public Guid Id { get; set; }

@@ -31,14 +31,14 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var episode in Model.Episodes)
+        @foreach (var episode in Model.Episodes.Where(x => x.Published != null))
         {
 
             <tr>
 
 
                 <td><a href="\@episode.EpisodeSlug">@episode.Title</a></td>
-                <td>@episode.Published.ToShortDateString()</td>
+                <td>@episode.Published?.ToShortDateString()</td>
 
 
             </tr>
