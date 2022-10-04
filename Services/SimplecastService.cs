@@ -65,7 +65,15 @@ namespace Kompilator.Services
         [JsonPropertyName("number")]
         public int EpisodeNumber { get; set; }
 
+        public string EpisodeSlug => EpisodeNumber.ToString("D3");
+
         [JsonPropertyName("long_description")]
         public string LongDescription { get; set; }
+
+
+        [JsonPropertyName("description")]
+        public string Description { get; set; }
+
+        
     }
 }

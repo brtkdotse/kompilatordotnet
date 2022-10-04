@@ -7,4 +7,5 @@
 <h1>@Model.Episode.Title</h1>
 
 <iframe height="200px" width="100%" frameborder="no" scrolling="no" seamless src="https://player.simplecast.com/@Model.Episode.Id?dark=false"></iframe>
+@Html.Raw(Model.Episode.Description)
 @Html.Raw(Model.Episode.LongDescription)

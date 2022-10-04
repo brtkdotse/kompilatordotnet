@@ -8,7 +8,7 @@ namespace Kompilator.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly SimplecastService _simplecastService;
-
+        public Episode LatestEpisode => Episodes.OrderByDescending(x => x.EpisodeNumber).First();
         public IndexModel(ILogger<IndexModel> logger, SimplecastService simplecastService)
         {
             _logger = logger;

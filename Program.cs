@@ -17,6 +17,7 @@ namespace Kompilator
                 client.BaseAddress = new Uri(builder.Configuration.GetValue<string>("SimplecastBaseURI"));
                 client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", String.Format("Bearer {0}", builder.Configuration.GetValue<string>("SimplecastToken")));
             });
+            builder.Services.AddScoped<ContentService>();
 
             var app = builder.Build();
 

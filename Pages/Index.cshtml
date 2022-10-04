@@ -5,7 +5,22 @@
 }
 
 <h1>Kompilator</h1>
+<p>
+    Podcasten för nyfikna utvecklare. Varannan vecka träffar Bartek Tatkowski en ny gäst och samtalar om utveckling, open source, startups och teknik.
+</p>
+<a class="listen" href="https://open.spotify.com/show/3yUXDikALYz3dDYhmKaXRs"><img src="~/img/spotify.png" /></a>
+<a class="listen" href="https://podcasts.apple.com/se/podcast/kompilator/id1455198510"><img src="~/img/itunes.png" /></a>
+<a class="listen" href="https://overcast.fm/itunes1455198510/kompilator"><img src="~/img/overcast.png" /></a>
 
+<h2>Senaste avsnittet</h2>
+<h3>@Model.LatestEpisode.Title</h3>
+<iframe height="200px" width="100%" frameborder="no" scrolling="no" seamless src="https://player.simplecast.com/@Model.LatestEpisode.Id?dark=false"></iframe>
+@Html.Raw(Model.LatestEpisode.Description)
+@Html.Raw(Model.LatestEpisode.LongDescription)
+<p>
+    <a href="/@Model.LatestEpisode.EpisodeSlug">Shownotes och länkar</a>
+</p>
+<h2>Alla avsnitt</h2>
 <table>
     <thead>
         <tr>
@@ -16,15 +31,15 @@
     <tbody>
         @foreach (var episode in Model.Episodes)
         {
-           
-        <tr>
-               
-           
-            <td><a href="\@episode.EpisodeNumber.ToString("D3")">@episode.Title</a></td>
-            <td>@episode.Published.ToShortDateString()</td>
 
-               
-        </tr>
+            <tr>
+
+
+                <td><a href="\@episode.EpisodeSlug">@episode.Title</a></td>
+                <td>@episode.Published.ToShortDateString()</td>
+
+
+            </tr>
         }
     </tbody>
 </table>

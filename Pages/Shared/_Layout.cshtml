@@ -5,14 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Kompilator</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-
+    <style>
+       .listen img {
+           max-width: 150px;
+       }
+    </style>
 </head>
 <body>
    @RenderBody()
 
    <footer>
-       <a href="/">Alla avsnitt</a><a href="/om">Om Kompilator</a> | <a href="/sponsor">Sponsor</a> | <a href="/about">In English</a>
+        <center><a href="/">Alla avsnitt</a> | <a href="/om">Om Kompilator</a></center>
    </footer>
     @await RenderSectionAsync("Scripts", required: false)
+    <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
 </body>
 </html>
