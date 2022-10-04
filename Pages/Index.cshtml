@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>Kompilator</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Titel</th>
+            <th>Publicerad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var episode in Model.Episodes)
+        {
+           
+        <tr>
+               
+           
+            <td><a href="\@episode.EpisodeNumber.ToString("D3")">@episode.Title</a></td>
+            <td>@episode.Published.ToShortDateString()</td>
+
+               
+        </tr>
+        }
+    </tbody>
+</table>
