@@ -20,7 +20,8 @@ namespace Kompilator.Pages
         public async Task OnGet()
         {
             string id = "b7258c05-be18-4f6b-af75-fb9639220d9d";
-            Episodes = await _simplecastService.GetAllEpisodesAsync(id);
+            var episodes = await _simplecastService.GetAllEpisodesAsync(id);
+            Episodes = episodes.Where(x => x.Published != null).ToList();
         }
     }
 }
