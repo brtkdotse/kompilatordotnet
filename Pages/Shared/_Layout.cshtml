@@ -10,20 +10,26 @@
     <meta property="og:image" content="https://kompilator.se/img/kompilator-og.jpg" />
     <meta property="og:image:url" content="https://kompilator.se/img/kompilator-og.jpg" />
     <meta property="twitter:image" content="https://kompilator.se/img/kompilator-og.jpg" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="kompilator.se">
+    <meta property="twitter:url" content="@ViewData["Url"]">
+    <meta name="twitter:title" content="@ViewData["Title"]">
+    <meta name="twitter:description" content="Kompilator - En podcast om utveckling, teknik, frilansande och allt runt omkring.">
+
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <style>
-       .listen img {
-           max-width: 150px;
-       }
+        .listen img {
+            max-width: 150px;
+        }
     </style>
 </head>
 <body>
-   @RenderBody()
+    @RenderBody()
 
-   <footer>
+    <footer>
         <center><a href="/">Alla avsnitt</a> | <a href="/om">Om Kompilator</a></center>
-   </footer>
+    </footer>
     @await RenderSectionAsync("Scripts", required: false)
     <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
     <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
