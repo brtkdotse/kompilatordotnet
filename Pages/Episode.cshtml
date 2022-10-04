@@ -1,7 +1,9 @@
 ﻿@page "/{EpisodeId}"
 @model EpisodePage
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = @Model.Episode.Title + " | Podcasten Kompilator";
+    ViewData["Url"] = "https://kompilator.se/" + Model.Episode.EpisodeSlug;
+
 }
 
 <h1>@Model.Episode.Title</h1>

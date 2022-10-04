@@ -1,7 +1,9 @@
 ﻿@page "/{pagename:alpha}"
 @model GenericPage
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = Model.PageName + " | Kompilator";
+    ViewData["Url"] = "https://kompilator.se/" + Model.PageName;
+
 }
 
 @Html.Raw(Model.Content)

@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Markdown\om.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
