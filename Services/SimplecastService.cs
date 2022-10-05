@@ -7,7 +7,9 @@ namespace Kompilator.Services
     {
         private readonly HttpClient _httpClient;
         private readonly IMemoryCache _cache;
-        private const string allEpisodeCacheKey = "__allepisodes";
+        private const string _allEpisodeCacheKey = "__allepisodes";
+        private const string _episodeCacheKey = "__episode{0}";
+
         public SimplecastService(HttpClient httpClient, IMemoryCache cache)
         {
             _httpClient = httpClient;
@@ -16,27 +18,37 @@ namespace Kompilator.Services
 
         public async Task<List<Episode>> GetAllEpisodesAsync(string showId)
         {
-            if (_cache.TryGetValue<List<Episode>>(allEpisodeCacheKey, out var cachedEpisodes))
+            if (_cache.TryGetValue<List<Episode>>(_allEpisodeCacheKey, out var cachedEpisodes))
                 return cachedEpisodes;
 
             var result = await _httpClient.GetAsync($"podcasts/{showId}/episodes?limit=200");
             result.EnsureSuccessStatusCode();
             var episodes = await result.Content.ReadFromJsonAsync<SimplecastEpisodesResponse>(new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true});
 
-            _cache.Set(allEpisodeCacheKey, episodes.Collection, new DateTimeOffset(DateTime.Now.AddHours(1)));
+            _cache.Set(_allEpisodeCacheKey, episodes.Collection, new DateTimeOffset(DateTime.Now.AddHours(1)));
 
             return episodes.Collection.Where(x => x.Published != null).ToList();
         }
 
         public async Task<Episode?> GetEpisodeAsync(string episodeId, string showId)
         {
+            string cacheKey = string.Format(_episodeCacheKey, episodeId);
+
+            if (_cache.TryGetValue<Episode>(cacheKey, out var cachedEpisode))
+                return cachedEpisode;
+
             var allEpisodes = await GetAllEpisodesAsync(showId);
 
             var episode = allEpisodes.Where(x => x.EpisodeNumber == Convert.ToInt32(episodeId)).FirstOrDefault();
        
             var result = await _httpClient.GetAsync($"episodes/{episode.Id}");
+            
             result.EnsureSuccessStatusCode();
+            
             var fetchedEpisode = await result.Content.ReadFromJsonAsync<Episode>(new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+            _cache.Set(cacheKey, fetchedEpisode, new DateTimeOffset(DateTime.Now.AddHours(1)));
+
             return fetchedEpisode;
         }
     }
