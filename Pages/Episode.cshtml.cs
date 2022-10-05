@@ -2,29 +2,29 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Configuration;
 
 namespace Kompilator.Pages
 {
     public class EpisodePage : PageModel
     {
-        private readonly ILogger<GenericPage> _logger;
         private readonly SimplecastService _service;
+        private readonly string _showId;
 
         [BindProperty(SupportsGet = true)]
         public string EpisodeId { get; set; }
 
         public Episode Episode { get; set; }
-        public EpisodePage(ILogger<GenericPage> logger, SimplecastService service)
+        public EpisodePage(SimplecastService service, IConfiguration configuration)
         {
-            _logger = logger;
             _service = service;
+            _showId = configuration.GetValue<string>("ShowId");
+
         }
 
         public async Task OnGet()
         {
-            string showId = "b7258c05-be18-4f6b-af75-fb9639220d9d";
-
-            Episode = await _service.GetEpisodeAsync(EpisodeId, showId);
+            Episode = await _service.GetEpisodeAsync(EpisodeId, _showId);
         }
     }
 }

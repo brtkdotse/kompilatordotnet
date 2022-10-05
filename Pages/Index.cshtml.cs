@@ -6,21 +6,22 @@ namespace Kompilator.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
         private readonly SimplecastService _simplecastService;
+        private readonly string _showId;
+
         public Episode LatestEpisode => Episodes.OrderByDescending(x => x.EpisodeNumber).First();
-        public IndexModel(ILogger<IndexModel> logger, SimplecastService simplecastService)
+
+        public IndexModel(SimplecastService simplecastService, IConfiguration configuration)
         {
-            _logger = logger;
             _simplecastService = simplecastService;
+            _showId = configuration.GetValue<string>("ShowId");
         }
 
         public List<Episode> Episodes { get; private set; }
 
         public async Task OnGet()
         {
-            string id = "b7258c05-be18-4f6b-af75-fb9639220d9d";
-            var episodes = await _simplecastService.GetAllEpisodesAsync(id);
+            var episodes = await _simplecastService.GetAllEpisodesAsync(_showId);
             Episodes = episodes.Where(x => x.Published != null).ToList();
         }
     }
