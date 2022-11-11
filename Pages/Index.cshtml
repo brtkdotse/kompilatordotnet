@@ -18,7 +18,7 @@
 
 <h2>Senaste avsnittet</h2>
 <h3>@Model.LatestEpisode.Title</h3>
-<iframe height="200px" width="100%" frameborder="no" scrolling="no" seamless src="https://player.simplecast.com/@Model.LatestEpisode.Id?dark=false"></iframe>
+<iframe loading="lazy" height="200px" width="100%" frameborder="no" scrolling="no" seamless src="https://player.simplecast.com/@Model.LatestEpisode.Id?dark=false"></iframe>
 @Html.Raw(Model.LatestEpisode.Description)
 @Html.Raw(Model.LatestEpisode.LongDescription)
 <p>
