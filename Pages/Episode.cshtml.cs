@@ -25,7 +25,7 @@ namespace Kompilator.Pages
         public async Task OnGet()
         {
             Episode = await _service.GetEpisodeAsync(EpisodeId, _showId);
-            var path = $"img\\custom-og\\{EpisodeId}.jpg";
+            var path = $"wwwroot\\img\\custom-og\\{EpisodeId}.jpg";
 
             if (System.IO.File.Exists(path))
             {
