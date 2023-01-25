@@ -16,7 +16,7 @@
     <a class="listen" href="https://pca.st/9j4O"><img src="~/img/pocketcasts.webp" /></a>
 </div>
 
-<i>Publicerad @Model.Episode.Published?.ToShortDateString()</i>
+<i>Publicerad @Model.Episode.Published?.ToString("yyyy-MM-dd")</i>
 
 @Html.Raw(Model.Episode.LongDescription)
 
