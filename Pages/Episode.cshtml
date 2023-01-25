@@ -15,5 +15,8 @@
     <a class="listen" href="https://overcast.fm/itunes1455198510/kompilator"><img src="~/img/overcast.webp" /></a>
     <a class="listen" href="https://pca.st/9j4O"><img src="~/img/pocketcasts.webp" /></a>
 </div>
+
+<i>Publicerad @Model.Episode.Published?.ToShortDateString()</i>
+
 @Html.Raw(Model.Episode.LongDescription)
 
