@@ -29,7 +29,7 @@ namespace Kompilator.Pages
 
             if (System.IO.File.Exists(path))
             {
-                ViewData["Custom-og"] = $"https://kompilator.se/img/custom-og/{EpisodeId}.jpg";
+                ViewData["Custom-og"] = $"https://kompilator.se/img/custom-og/{EpisodeId}.webp";
             }
         }
     }
