@@ -8,7 +8,7 @@
     <meta property="og:url" content="@ViewData["Url"]" />
     <meta property="og:title" content="@ViewData["Title"]" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Kompilator - En podcast om utveckling, teknik, frilansande och allt runt omkring." />
+    <meta property="og:description" content="@(ViewData["Description"] ?? "Kompilator - En podcast om utveckling, teknik, frilansande och allt runt omkring.")">
     <meta property="og:image" content="@(ViewData["Custom-og"] ?? "https://kompilator.se/img/kompilator-og.jpg")" />
     <meta property="og:image:url" content="@(ViewData["Custom-og"] ?? "https://kompilator.se/img/kompilator-og.jpg")" />
     <meta property="twitter:image" content="@(ViewData["Custom-og"] ?? "https://kompilator.se/img/kompilator-og.jpg")" />
@@ -16,7 +16,7 @@
     <meta property="twitter:domain" content="kompilator.se">
     <meta property="twitter:url" content="@ViewData["Url"]">
     <meta name="twitter:title" content="@ViewData["Title"]">
-    <meta name="twitter:description" content="Kompilator - En podcast om utveckling, teknik, frilansande och allt runt omkring.">
+    <meta name="twitter:description" content="@(ViewData["Description"] ?? "Kompilator - En podcast om utveckling, teknik, frilansande och allt runt omkring.")">
     <link rel="icon" type="image/png" href="/img/favicon.png">
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="/css/water-dark.min.css">
