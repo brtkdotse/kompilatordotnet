@@ -25,11 +25,11 @@ namespace Kompilator.Pages
         public async Task OnGet()
         {
             Episode = await _service.GetEpisodeAsync(EpisodeId, _showId);
-            var path = Path.Combine("wwwroot","img","custom-og",$"{EpisodeId}.webp");
+            var path = Path.Combine("wwwroot","img","custom-og",$"{EpisodeId}.jpg");
 
             if (System.IO.File.Exists(path))
             {
-                ViewData["Custom-og"] = $"https://kompilator.se/img/custom-og/{EpisodeId}.webp";
+                ViewData["Custom-og"] = $"https://kompilator.se/img/custom-og/{EpisodeId}.jpg";
             }
         }
     }
